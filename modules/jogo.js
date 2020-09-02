@@ -7,6 +7,10 @@ const JogoSchema = new mongoose.Schema({
     propriedades:{
         type: Array,
         required: true,
+    },
+    userId:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user'
     }
 })
 

@@ -37,7 +37,7 @@ router.post('/',jogoValidatorPost,async (request, response) => {
         return response.status(500).send({errors: erros})
     }
 })
-router.get('/',auth,async (request, response) => {
+router.get('/',[],async (request, response) => {
     let erros = []
     try {
         const errors = validationResult(request)
