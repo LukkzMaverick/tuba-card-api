@@ -15,7 +15,7 @@ const checkId = [
     check('_id','Id em formato inválido.').isMongoId()
 ]
 
-router.post('/',jogoValidatorPost,async (request, response) => {
+router.post('/',auth, jogoValidatorPost,async (request, response) => {
     let erros = []
     try {
         const errors = validationResult(request)
@@ -37,7 +37,7 @@ router.post('/',jogoValidatorPost,async (request, response) => {
         return response.status(500).send({errors: erros})
     }
 })
-router.get('/',[],async (request, response) => {
+router.get('/',auth,async (request, response) => {
     let erros = []
     try {
         const errors = validationResult(request)
@@ -58,7 +58,7 @@ router.get('/',[],async (request, response) => {
         return response.status(500).send({errors: erros})
     }
 })
-router.put('/:jogoId',jogoValidatorPost,async (request, response) => {
+router.put('/:jogoId',auth,jogoValidatorPost,async (request, response) => {
     let erros = []
     try {
         const errors = validationResult(request)
@@ -82,7 +82,7 @@ router.put('/:jogoId',jogoValidatorPost,async (request, response) => {
         return response.status(500).send({errors: erros})
     }
 })
-router.patch('/:jogoId', [], async (request, response) =>{
+router.patch('/:jogoId', auth, async (request, response) =>{
     let erros = []
     try {
         const errors = validationResult(request)
@@ -106,7 +106,7 @@ router.patch('/:jogoId', [], async (request, response) =>{
         return response.status(500).send({errors: erros})
     }
 })
-router.delete('/:jogoId',[],async (request, response) => {
+router.delete('/:jogoId',auth,async (request, response) => {
     let erros = []
     try {
         const errors = validationResult(request)

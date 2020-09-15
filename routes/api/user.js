@@ -10,15 +10,15 @@ const config = require('config')
 
 
 const userPostValidator = [
-    check('email','Email inserido não é válido').isEmail(),
-    check('senha','Por favor, insira uma senha com 6 ou mais caracteres').isLength({min: 6})
+    check('email','Email inserido não é válido.').isEmail(),
+    check('senha','Por favor, insira uma senha com 6 ou mais caracteres.').isLength({min: 6})
 ]
 
 router.post('/register', userPostValidator, async (request, response) => {
     try {
         const errors = validationResult(request);
         if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() })
+            return response.status(400).json({ errors: errors.array() })
         }
 
         let {email, senha} = request.body
@@ -39,7 +39,7 @@ router.post('/login', userPostValidator, async (request, response) => {
     try {
         const errors = validationResult(request);
         if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() })
+            return response.status(400).json({ errors: errors.array() })
         }
 
         let {email, senha} = request.body
