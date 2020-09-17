@@ -11,7 +11,7 @@ const config = require('config')
 
 const userPostValidator = [
     check('email','Email inserido não é válido.').isEmail(),
-    check('senha','Por favor, insira uma senha com 6 ou mais caracteres.').isLength({min: 6})
+    check('senha','Insira uma senha com 6 ou mais caracteres.').isLength({min: 6})
 ]
 
 router.post('/register', userPostValidator, async (request, response) => {
@@ -61,7 +61,7 @@ router.post('/login', userPostValidator, async (request, response) => {
 
         jwt.sign(payload, config.get('jwtSecret'), {expiresIn: '3 days'}, (error, token) => {
             if(error) throw error
-            response.json({token})
+            response.json({token, ...payload})
         })
         
     } catch (error) {

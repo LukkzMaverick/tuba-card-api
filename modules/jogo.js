@@ -10,14 +10,15 @@ const JogoSchema = new mongoose.Schema({
     },
     userId:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'user'
+        ref: 'user',
+        required: true
     }
 })
 
 JogoSchema.path('propriedades').validate(function (value) {
     if (value.length > 5 || value.length < 2) {
-      throw new Error("The size of properties need to be between 2 and 5");
+      throw new Error("O tamanho de propriedades precisa ser um valor entre 2 e 5");
     }
 });
 
-module.exports = mongoose.model('jogo', JogoSchema)
+module.exports = mongoose.model('jogo2', JogoSchema)

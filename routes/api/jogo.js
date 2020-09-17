@@ -22,8 +22,8 @@ router.post('/',auth, jogoValidatorPost,async (request, response) => {
         if(!errors.isEmpty()){
             return response.status(400).json({errors: errors.array()})
         }
-        const {nomeJogo, propriedades} = request.body;
-        const jogo = new Jogo({nomeJogo, propriedades})
+        const {nomeJogo, propriedades, userId} = request.body;
+        const jogo = new Jogo({nomeJogo, propriedades, userId})
         await jogo.save()
         if(jogo.id){
             response.status(201).send(jogo)
@@ -37,7 +37,7 @@ router.post('/',auth, jogoValidatorPost,async (request, response) => {
         return response.status(500).send({errors: erros})
     }
 })
-router.get('/',auth,async (request, response) => {
+router.get('/:userId',auth,async (request, response) => {
     let erros = []
     try {
         const errors = validationResult(request)
@@ -45,7 +45,8 @@ router.get('/',auth,async (request, response) => {
         if(!errors.isEmpty()){
             return response.status(400).json({errors: errors.array()})
         }
-        const jogos = await Jogo.find({}) 
+        const userId = request.params.userId
+        const jogos = await Jogo.find({userId: userId}) 
         if(jogos){
             return response.send(jogos)
         }
