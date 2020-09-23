@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index",
-"preinstall": "npx only-allow pnpm"
+    "start": "node index"
   },
   "keywords": [],
   "author": "",
