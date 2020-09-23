@@ -4,10 +4,6 @@ const bcrypt = require('bcrypt')
 const router = express.Router()
 const { check, validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
-const config = require('config')
-
-
-
 
 const userPostValidator = [
     check('email','Email inserido não é válido.').isEmail(),
