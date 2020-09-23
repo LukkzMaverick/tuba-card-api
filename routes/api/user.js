@@ -55,7 +55,7 @@ router.post('/login', userPostValidator, async (request, response) => {
             }
         }
 
-        jwt.sign(payload, config.get('jwtSecret'), {expiresIn: '3 days'}, (error, token) => {
+        jwt.sign(payload, process.env.JWT_SECRET, {expiresIn: '3 days'}, (error, token) => {
             if(error) throw error
             response.json({token, ...payload})
         })
