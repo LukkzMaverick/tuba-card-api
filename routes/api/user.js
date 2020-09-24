@@ -22,9 +22,19 @@ router.post('/register', userPostValidator, async (request, response) => {
         const usuario = new User({email, senha})
         await usuario.save()
         if(usuario.id){
-            return response.status(201).json(usuario)
+            const payload = {
+                user: {
+                    id: usuario.id,
+                    email: usuario.email
+                }
+            }
+            jwt.sign(payload, process.env.JWT_SECRET, {expiresIn: '3 days'}, (error, token) => {
+                if(error) throw error
+                return response.send({token, ...payload})
+            })
+        }else{
+            return response.status(500).send({errors: [{msg: "Erro ao gravar informações no banco de dados. Tente novamente mais tarde."}]})
         }
-        return response.status(500).send({errors: [{msg: "Erro ao gravar informações no banco de dados. Tente novamente mais tarde."}]})
     } catch (error) {
         console.error(error.message)
         return response.status(500).send({errors: [{msg: "Internal Server Error"}]})
