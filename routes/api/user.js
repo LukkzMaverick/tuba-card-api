@@ -18,6 +18,9 @@ router.post('/register', userPostValidator, async (request, response) => {
         }
 
         let {email, senha} = request.body
+        if(await User.findOne({email: email})){
+            return response.status(403).send({errors: [{msg: "Esse email já foi cadastrado."}]})
+        }
         senha = await criptografarSenha(senha)
         const usuario = new User({email, senha})
         await usuario.save()
@@ -51,12 +54,12 @@ router.post('/login', userPostValidator, async (request, response) => {
         let {email, senha} = request.body
         const user = await User.findOne({email}).select('_id senha')
         if(!user){
-            return response.status(404).json({errors: [{msg: 'Usuário não existe!'}]})
+            return response.status(404).json({errors: [{msg: 'Email ou Senha Incorretos!'}]})
         }
         const isMatch = await bcrypt.compare(senha, user.senha)
 
         if(!isMatch){
-            return response.status(400).json({errors: [{msg: 'Senha incorreta'}]})
+            return response.status(400).json({errors: [{msg: 'Email ou Senha Incorretos!'}]})
         }
 
         const payload = {
