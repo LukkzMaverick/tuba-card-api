@@ -1,7 +1,7 @@
 # Tuba Card API
 
-Este site(back+front) está hospedado em https://tuba-card.herokuapp.com/ 
-Repositório do Front-end: https://github.com/LukkzMaverick/tuba-card
+- Este site(back+front) está hospedado em https://tuba-card.herokuapp.com/ 
+- Repositório do Front-end: https://github.com/LukkzMaverick/tuba-card
 # Pré-Requisitos
 
  - [Node JS](https://nodejs.org/en/)
