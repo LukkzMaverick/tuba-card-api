@@ -9,6 +9,7 @@
 ## Getting Started
     
     git clone git@github.com:LukkzMaverick/api-boleto.git
+    cd api-boleto
     npm install   
     npm run nodemon
 
