@@ -13,5 +13,5 @@
     npm run nodemon
 
 ## Testes
-- Para rodar os testes use <code>npm test</code>
-- Para ver a cobertura de código do projeto use <code>npm coverage</code>
+- Para rodar os testes use <code>npm run test</code>
+- Para ver a cobertura de código do projeto use <code>npm run coverage</code>
