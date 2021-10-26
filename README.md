@@ -10,7 +10,7 @@
     
     git clone git@github.com:LukkzMaverick/api-boleto.git
     npm install   
-    npm nodemon
+    npm run nodemon
 
 ## Testes
 - Para rodar os testes use <code>npm test</code>
