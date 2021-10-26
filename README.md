@@ -5,14 +5,12 @@
 # Pré-Requisitos
 
  - [Node JS](https://nodejs.org/en/)
- 
-## Getting Started
-    
-    git clone git@github.com:LukkzMaverick/api-boleto.git
-    cd api-boleto
-    npm install   
-    npm run nodemon
 
-## Testes
-- Para rodar os testes use <code>npm run test</code>
-- Para ver a cobertura de código do projeto use <code>npm run coverage</code>
+## Getting Started
+
+    npm install   
+    npm start
+
+## Configuração Inicial
+- Renomear o .env.example para .env
+- Atribuir uma URI válida a MONGO_URI dentro do .env, é possível criar uma conta gratuita* com acesso a um cluster no mongo atlas
