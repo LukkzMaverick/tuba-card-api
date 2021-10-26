@@ -7,10 +7,11 @@
  - [Node JS](https://nodejs.org/en/)
  
 ## Getting Started
-
+    
+    git clone git@github.com:LukkzMaverick/api-boleto.git
     npm install   
-    npm start
+    npm nodemon
 
-## Configuração Inicial
-- Renomear o .env.example para .env
-- Atribuir uma URI válida a MONGO_URI dentro do .env, é possível criar uma conta gratuita* com acesso a um cluster no mongo atlas
+## Testes
+- Para rodar os testes use <code>npm test</code>
+- Para ver a cobertura de código do projeto use <code>npm coverage</code>
